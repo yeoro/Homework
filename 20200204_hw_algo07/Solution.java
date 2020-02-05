@@ -38,11 +38,6 @@ public class Solution {
 				}
 			}
 			
-//			Iterator<Integer> itr = list.iterator();
-//			while(itr.hasNext()) {
-//				System.out.print(itr.next() + " ");
-//			}
-			
 			
 			
 			System.out.print(String.format("#%d ", tc));
