@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>과제3</title>
+	</head>
+	<body>
+		<h2> 3. 임의의 정수 한 개를 발생시켜 변수에 저장한 후 사용자가 값을 입력해 알아 맞히는 프로그램 </h2>
+		<script type="text/javascript">
+			var com = Math.floor(Math.random() * 10);
+			var user = prompt("정수를 입력해주세요");
+			
+			document.write("정답 : " + com + "<br>");
+			document.write("유저의 답 : " + user + "<br><br>");
+			if(user == com){
+				document.write("정답입니다!");
+			}else{
+				document.write("오답입니다ㅠㅠ");
+			}
+		</script>
+	
+	</body>
+</html>
