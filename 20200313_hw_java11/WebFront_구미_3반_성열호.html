@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>WebFront_구미_3반_성열호</title>
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+		<style type="text/css">
+			#container{ /* id="container"인 태그들 */
+				width: 960px;
+				padding: 20px;
+				margin: 0 auto; /* 첫 번째 설정은 상/하 -> 여백이 0, 두 번째 설정은 좌/우 -> 중앙 정렬, auto 속성은 꼭 width 지정 필요 */
+				border: 1px solid red;
+			}
+			h1{
+				text-align: left;
+				font-family: 'Nanum Myeongjo', serif;
+				color: red;
+			}
+			header{
+				padding: 20px;
+				margin-bottom: 20px;
+				background-color: #88cc00;
+			}
+			section{
+				padding: 20px;
+				width: 620px;
+				margin-bottom: 20px;
+				border: 1px solid gray;
+				float: left;
+			}
+			table{
+				width: 580px;
+				border-collapse: collapse;
+				text-align: center;
+				margin: auto;
+				
+			}
+			tbody tr:nth-child(2n){
+				background-color: #b3d9ff;
+			}
+			tbody tr:nth-child(2n+1){
+				background-color: #e6f2ff;
+			}
+			tr{
+				font-size: 15pt;
+				height: 50px;
+				border-bottom: 1px solid gray;
+			}
+			td{
+				font-size: 13pt;
+			}
+			th{
+				background-color: #003d99;
+				color: white;
+			}
+			aside{
+				width: 220px;
+				padding: 20px;
+				margin-bottom: 20px;
+				border: 1px solid gray;
+				float: right;
+				background-color: #e6e6e6;
+				font-size: 12pt;
+			}
+			footer{
+				padding: 20px;
+				border: 1px solid gray;
+				clear: both; /* 붕 뜨는 효과 없애고 아래로 내려감 */
+			}
+			article{
+				background-color: #ffd11a;
+				width: 580px;
+				margin: auto;
+			}
+			p{
+				font-size: 14pt;
+			}
+			nav{
+				font-size: 13pt;
+				margin-left: 20px;
+			}
+			ul{
+				margin: 0px;
+			}
+			/*#head{
+				 float: left;
+				 top: 10%;
+				 transform: translateY(50%);
+				  margin-right: 350px;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id = "container">
+			<header>
+				<!-- 인라인 방식의 CSS, 내부 태그가 다른 외부 태그보다 우선순위가 높다 -->
+					<h1 style="color:pink;"> ONLINE SSAFY </h1>	
+					<nav>
+						<a href="#"> 메뉴1 </a> &emsp;
+						<a href="#"> 메뉴2 </a> &emsp;
+						<a href="#"> 메뉴3 </a> &emsp;
+						<a href="#"> 메뉴4 </a>
+					</nav>
+			</header>		
+			<section>
+				<h2> 기사1 </h2>
+				<article>
+					<p> 재산권의 행사는 공공복리에 적합하도록 하여야 한다. 정부는 회계연도마다 예산안을 편성하여 회계연도 개시 90일전까지 국회에 제출하고, 
+					국회는 회계연도 개시 30일전까지 이를 의결하여야 한다.</p>
+
+					<p> 대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다. 제2항과 제3항의 처분에 대하여는 법원에 제소할 수 없다.
+					언론·출판에 대한 허가나 검열과 집회·결사에 대한 허가는 인정되지 아니한다.</p>
+				</article>
+				<h2> 기사2 </h2>
+				<table>
+					<tbody>
+						<tr>
+							<th> 번호 </th>
+							<th> 제목 </th>
+							<th> 작성자 </th>
+						</tr>
+						<tr>
+							<td> 1 </td>
+							<td> 이 헌법시행 당시의 대법원장과 대법원판사가... </td>
+							<td> 강감찬 </td>
+						</tr>
+						<tr>
+							<td> 2 </td>
+							<td> 대한민국은 국제평화의 유지... </td>
+							<td> 장영실 </td>
+						</tr>
+						<tr>
+							<td> 3 </td>
+							<td> 정당은 법률이 정하는 바에... </td>
+							<td> 안중근 </td>
+						</tr>
+						<tr>
+							<td> 4 </td>
+							<td> 공공필요에 의한 재산권의 수용... </td>
+							<td> 김두한 </td>
+						</tr>
+						<tr>
+							<td> 5 </td>
+							<td> 국회의원은 그 지위를 남용하여 국가... </td>
+							<td> 계백 </td>
+						</tr>
+						<tr>
+							<td> 6 </td>
+							<td> 정기회의 회기는 100일을 초과할 수 없다... </td>
+							<td> 최무선 </td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<aside>
+				<h2> SIDEBAR </h2>
+				<h3> 모든 국민은 근로의 의무를 진다. 국가는 근로의 의무의 내용과 조건을 민주주의원칙에 따라 법률로 정한다. </h3>
+			</aside>
+			<footer>
+				<h2> Footer </h2>
+				<h3> 이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. </h3>
+			</footer>
+		</div>
+		
+	</body>
+</html>
