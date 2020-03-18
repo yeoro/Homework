@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>엘리먼트 생성 및 속성 처리</title>
+   <style type="text/css">
+      * {
+          margin: 0px;
+          padding: 0px;
+      }
+      
+      .container {
+          width: 960px;
+          margin: 0 auto;
+      }
+      
+      .content {
+          width: 500px;
+          padding-top: 20px;
+          margin: 50px auto 0;
+          background: #eee;
+      }
+      
+      .btn-group {
+          text-align: center;
+      }
+      
+      .btn-group>button {
+          height: 30px;
+          border: 1px solid #345;
+          color: #345;
+          font-weight: bold;
+          background: white;
+          padding: 0 10px;
+      }
+      
+      .btn-group>button:active {
+          color: white;
+          background: black;
+          outline: none;
+      }
+      
+      .img-view {
+          text-align: center;
+          height: 150px;
+      }
+      
+      .msg-area {
+          margin: 10px auto;
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-align: center;
+      }
+      
+      .img-thumb {
+          margin-top: 20px;
+          text-align: center;
+      }
+      
+      .img-thumb>img {
+          width: 100px;
+          height: 70px;
+          margin: 10px;
+          box-sizing: border-box;
+          opacity: 0.5;
+      }
+      
+      .img-thumb>img.choice {
+          border: 5px solid #345;
+          opacity: 1;
+      }
+      
+      .img-thumb>img:hover {
+          opacity: 1;
+      }
+   </style>
+   <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+</head>
+
+<body>
+   <div class="container">
+      <div class="content">
+
+         <div class="btn-group">
+            <button id="addBtn">랜덤 선택</button>
+         </div>
+
+         <div class="msg-area">
+            오늘의 메뉴 : <span id="foodName"> <!-- 선택된 음식의 이름이 보이는 부분입니다. --></span>
+         </div>
+
+
+         <div class="img-view">
+            <!-- 선택한 이미지가 보이는 부분입니다.-->
+            <img width="200" height="150">
+         </div>
+
+
+         <div class="img-thumb">
+            <!-- images 배열 밑의 4개의 이미지가 보이는 영역입니다.(썸네일 영역)  -->
+         </div>
+
+      </div>
+   </div>
+   <!-- <script src="./js/homework.js"></script> -->
+
+   <script>
+      var foods = [ "cake", "burger", "steak", "sandwich"];
+      var foodName = [ "케이크", "햄버거", "스테이크", "샌드위치" ];
+      var index = 0;
+        
+        
+        $("#addBtn").on("click", function() {
+           index = parseInt(Math.random() * 4);
+           console.log("addBtn " + index);
+           choiceMenu();
+        });
+        
+        function setMenu() {
+           console.log("setMenu");
+           $(".img-view > img").attr("src", './images/' + foods[index] + '.jpg');
+           $("#foodName").html(foodName[index]);
+           
+           var html = "";
+           for (var i = 0; i < foods.length; i++) {
+              html += '<img src="./images/' + foods[i] + '.jpg" num="' + i + '">'
+           }
+           $(".img-thumb").html(html);
+           $(".img-thumb > img:eq("+ index +")").addClass("choice");
+           $(".img-thumb > img").on("click", function() {
+              index = $(this).attr('num');
+              choiceMenu();
+           });
+        }
+        
+        function choiceMenu() {
+           console.log("choiceMenu")
+           $(".img-view > img").attr("src", './images/' + foods[index] + '.jpg');
+           $("#foodName").html(foodName[index]);
+           $(".img-thumb > img").removeClass("choice");
+           $(".img-thumb > img:eq("+ index +")").addClass("choice");
+        }
+      
+        setMenu();
+  
+   </script>
+</body>
+
+</html>
