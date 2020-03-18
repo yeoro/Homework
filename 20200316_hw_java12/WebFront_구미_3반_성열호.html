@@ -49,10 +49,10 @@
 			</div>
 			
 			<div id="menu" style="border: 0px;">
-				<img id="cake" src="../img/cake.jpg" onmouseover="over('cake');" onmouseout="out('cake');" onclick="select('cake')">
-				<img id="burger" src="../img/burger.jpg" onmouseover="over('burger');" onmouseout="out('burger');" onclick="select('burger')">
-				<img id="steak" src="../img/steak.jpg" onmouseover="over('steak');" onmouseout="out('steak');" onclick="select('steak')">
-				<img id="sandwich" src="../img/sandwich.jpg" onmouseover="over('sandwich');" onmouseout="out('sandwich');" onclick="select('sandwich')">
+				<img id="cake" src="images/cake.jpg" onmouseover="over('cake');" onmouseout="out('cake');" onclick="select('cake')">
+				<img id="burger" src="images/burger.jpg" onmouseover="over('burger');" onmouseout="out('burger');" onclick="select('burger')">
+				<img id="steak" src="images/steak.jpg" onmouseover="over('steak');" onmouseout="out('steak');" onclick="select('steak')">
+				<img id="sandwich" src="images/sandwich.jpg" onmouseover="over('sandwich');" onmouseout="out('sandwich');" onclick="select('sandwich')">
 			</div>
 		</div>
 		
@@ -62,7 +62,7 @@
 			var selectedRandom = ['cake', 'burger', 'steak', 'sandwich'];
 			var div = document.querySelector("#a");
 			var img = document.createElement("img");
-			img.setAttribute("src", "../img/cake.jpg");
+			img.setAttribute("src", "images/cake.jpg");
 			img.setAttribute("id", "selectedImg");
 			img.setAttribute("width", "400");
 			img.setAttribute("height", "300");
@@ -118,7 +118,7 @@
 					
 					// 메인 이미지 변경
 					var sImg = document.querySelector("#selectedImg");
-					sImg.setAttribute("src", ("../img/" + id + ".jpg"));
+					sImg.setAttribute("src", ("images/" + id + ".jpg"));
 				}
 			}
 			
@@ -133,6 +133,7 @@
 			function randomMenu(){
 				var rmenu = Math.round(Math.random() * 3);
 				select(selectedRandom[rmenu]);
+				over(selectedRandom[rmenu]);
 			}
 		</script>
 			
