@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>오늘의 메뉴</title>
+		<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		 crossorigin="anonymous"></script>
+		<style type="text/css">
+			div{
+				width: 700pt;
+				margin: auto;
+				border: 1px solid gray;
+			}
+			button{
+				width: 100pt;
+				height: 30pt;
+				font-size: 20px;
+				margin-left: 300pt;
+				margin-top: 20pt;
+			}
+			p{
+				font-size: 30pt;
+				text-align: center;
+				font-weight: bold;
+				margin-bottm: 30pt;
+			}
+			#a img{
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
+			#menu img{
+				display: inline-block;
+				width: 150pt;
+				height: 100pt;
+				margin-top: 30pt;
+				margin-left: 2.2%;
+				margin-bottom: 20pt;
+				opacity: 0.5;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div>
+			<button onclick="randomMenu();"> 랜덤 선택 </button>
+			<div id="a" style="border: 0px;">
+				<p> 오늘의 메뉴 : <span id="menuText"> 케이크 </span> </p>
+			</div>
+			
+			<div id="menu" style="border: 0px;">
+				<img id="cake" src="../img/cake.jpg" onmouseover="over('cake');" onmouseout="out('cake');" onclick="select('cake')">
+				<img id="burger" src="../img/burger.jpg" onmouseover="over('burger');" onmouseout="out('burger');" onclick="select('burger')">
+				<img id="steak" src="../img/steak.jpg" onmouseover="over('steak');" onmouseout="out('steak');" onclick="select('steak')">
+				<img id="sandwich" src="../img/sandwich.jpg" onmouseover="over('sandwich');" onmouseout="out('sandwich');" onclick="select('sandwich')">
+			</div>
+		</div>
+		
+		<script>
+			// 초기 화면을 케이크로 설정
+			var selectedMenu = 'cake';
+			var selectedRandom = ['cake', 'burger', 'steak', 'sandwich'];
+			var div = document.querySelector("#a");
+			var img = document.createElement("img");
+			img.setAttribute("src", "../img/cake.jpg");
+			img.setAttribute("id", "selectedImg");
+			img.setAttribute("width", "400");
+			img.setAttribute("height", "300");
+			div.append(img);
+			
+			console.log(selectedMenu);
+			
+			document.getElementById("cake").style.border = '10px solid #3366cc';
+			document.getElementById("cake").style.opacity = '1';
+			
+			// 이미지에 마우스를 올렸을 때 밝기 조절
+			function over(id){
+				document.getElementById(id).style.opacity = '1';
+			}
+			
+			// 이미지에 마우스를 뗐을 때 밝기 조절
+			function out(id){
+				if(id == selectedMenu){
+					document.getElementById(id).style.opacity = '1';
+				}else{
+					document.getElementById(id).style.opacity = '0.5';
+				}
+			}
+			
+			// 이미지를 선택했을 때
+			function select(id){
+				if(id != selectedMenu){
+					// 선택되었던 이미지 원래대로 
+					clear(selectedMenu);
+					
+					selectedMenu = id;
+					
+					// 선택된 이미지 경계, 밝기 조절
+					var s = document.getElementById(id);
+					s.style.border = '10px solid #3366cc';
+					
+					// 메인 텍스트 변경
+					var span = document.querySelector("#menuText");
+					switch(id){
+					case 'cake':
+						span.innerHTML = '케이크';
+						break;
+					case 'burger':
+						span.innerHTML = '햄버거';
+						break;
+					case 'steak':
+						span.innerHTML = '스테이크';
+						break;
+					case 'sandwich':
+						span.innerHTML = '샌드위치';
+						break;
+					}
+					
+					// 메인 이미지 변경
+					var sImg = document.querySelector("#selectedImg");
+					sImg.setAttribute("src", ("../img/" + id + ".jpg"));
+				}
+			}
+			
+			// 선택되지 않은 이미지를 원래대로 돌려놓음
+			function clear(id){
+				var id = document.getElementById(id);
+				id.style.opacity = '0.5';
+				id.style.border = 'none';
+			}
+			
+			// 메뉴 랜덤 선택
+			function randomMenu(){
+				var rmenu = Math.round(Math.random() * 3);
+				select(selectedRandom[rmenu]);
+			}
+		</script>
+			
+		
+	</body>
+</html>
