@@ -17,7 +17,7 @@ public class Test {
 		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
-			System.out.println("----------- 메뉴 선택 -----------");
+			System.out.println("------------ 메뉴 선택 ------------");
 			System.out.println(
 					"\t1. 전체 상품 조회\n"
 							+ "\t2. 상품 번호로 조회\n"
@@ -25,7 +25,7 @@ public class Test {
 							+ "\t4. 상품 정보 수정\n"
 							+ "\t5. 상품 삭제\n"
 							+ "\t6. 종료");
-			System.out.println("------------------------------");
+			System.out.println("--------------------------------");
 			System.out.print("메뉴를 선택하세요 : ");
 
 			int menu = sc.nextInt();
