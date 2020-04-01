@@ -10,10 +10,12 @@ import board.vo.Product;
 import common.db.ConnectionFactory;
 
 public class ProductDAO {
-
+	
+	List<Product> list; 
+	
 	// 전체 조회
 	public List<Product> selectProduct() throws Exception {
-		List<Product> list = new ArrayList<>(); 
+		list = new ArrayList<>(); 
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -80,6 +82,8 @@ public class ProductDAO {
 	
 	// 상품정보 저장
 	public void insertProduct(Product product) throws Exception{
+		selectProduct();
+		
 		Connection con = null;
 		PreparedStatement pstmt = null; 
 		
@@ -87,19 +91,13 @@ public class ProductDAO {
 			con = ConnectionFactory.getConnection();
 			
 			String query = "insert into "
-							+ "product("
-								+ "code,"
-								+ "name,"
-								+ "price) "
-							+ "values("
-								+ "?,"
-								+ "?,"
-								+ "?)";
+							+ "product(code, name, price) "
+							+ "values(?, ?, ?)";
 			
 			pstmt = con.prepareStatement(query);
 			
-			int index = 6;
-			pstmt.setString(index++, product.getCode());
+			int index = 1;
+			pstmt.setString(index++, Integer.toString(list.size()+1));
 			pstmt.setString(index++, product.getName());
 			pstmt.setInt(index++, product.getPrice());
 			pstmt.executeUpdate();
@@ -111,6 +109,8 @@ public class ProductDAO {
 	
 	// 상품정보 수정
 	public void updateProduct(Product product, String code) throws Exception{
+		selectProduct();
+		
 		Connection con = null;
 		PreparedStatement pstmt = null; 
 		
@@ -124,9 +124,10 @@ public class ProductDAO {
 			
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(Integer.parseInt(code), product.getName());
-			pstmt.setInt(Integer.parseInt(code), product.getPrice());
-			pstmt.setString(1, code);
+			int index = 1;
+			pstmt.setString(index++, product.getName());
+			pstmt.setInt(index++, product.getPrice());
+			pstmt.setString(index++, code);
 			pstmt.executeUpdate();
 			
 		} finally {
@@ -150,7 +151,7 @@ public class ProductDAO {
 			
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(Integer.parseInt(code), p.getCode());
+			pstmt.setString(1, code);
 			pstmt.executeUpdate();
 			
 		} finally { 

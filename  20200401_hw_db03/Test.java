@@ -8,10 +8,11 @@ import board.vo.Product;
 
 public class Test {
 	
-	public static String code;
-	
 	public static void main(String[] args) {
 		ProductDAO pDAO = new ProductDAO();
+		String code, name;
+		int price;
+		Product p;
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -39,11 +40,11 @@ public class Test {
 					System.out.println("상품번호\t상품명\t가격");
 					System.out.println("-----------------------------");
 					
-					for(Product p : list) {
+					for(Product product : list) {
 						System.out.println(
-								p.getCode() + "\t" + 
-										p.getName() + "\t" + 
-										p.getPrice() + "\t");
+								product.getCode() + "\t" + 
+								product.getName() + "\t" + 
+								product.getPrice() + "\t");
 					}
 					
 					if(list.isEmpty()) {
@@ -56,7 +57,7 @@ public class Test {
 				
 				// 상품 번호로 조회
 			case 2:
-				System.out.print("상품 번호를 입력하세요 : ");
+				System.out.print("조회할 상품 번호를 입력하세요 : ");
 				code = sc.next();
 				
 				System.out.println("----------------- 상품 정보 -----------------");
@@ -67,14 +68,14 @@ public class Test {
 				
 				// 상품 정보 입력
 			case 3:
-				Product p = new Product();
+				p = new Product();
 				
-				System.out.print("상품명을 입력하세요 : ");
-				String name = sc.next();
+				System.out.print("상품 명을 입력하세요 : ");
+				name = sc.next();
 				p.setName(name);
 				
 				System.out.print("상품 가격을 입력하세요 : ");
-				int price = sc.nextInt();
+				price = sc.nextInt();
 				p.setPrice(price);
 				
 				try {
@@ -84,10 +85,43 @@ public class Test {
 					e.printStackTrace();
 				}
 				break;
-			case 4:
-			case 5:
 				
-				// 종료
+			// 상품 정보 수정
+			case 4:
+				p = new Product();
+				
+				System.out.print("수정할 상품의 번호를 입력하세요 : ");
+				code = sc.next();
+				
+				System.out.print("상품 명을 입력하세요 : ");
+				name = sc.next();
+				p.setName(name);
+				
+				System.out.print("상품 가격을 입력하세요 : ");
+				price = sc.nextInt();
+				p.setPrice(price);
+				
+				try {
+					pDAO.updateProduct(p, code);
+					System.out.println("상품 정보가 수정되었습니다.");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+				
+			// 상품 삭제
+			case 5:
+				System.out.print("수정할 상품의 번호를 입력하세요 : ");
+				code = sc.next();
+				
+				try {
+					pDAO.deleteProduct(code);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+				
+			// 종료
 			case 6:
 				System.exit(0);
 			}
