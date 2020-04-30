@@ -1,0 +1,170 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header,
+footer,
+section,
+aside,
+nav,
+article {
+	display: block;
+}
+
+body {
+	margin: 0 auto;
+	padding: 22px 0;
+	font: 13px/22px Helvetica Arial, sans-serif;
+	background-color: #f0f0f0;
+}
+
+h1,
+h2 {
+	font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0 50px 0;
+	text-align: center;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 11px 0;
+}
+
+p {
+	padding-bottom: 22px
+}
+
+a {
+	color: black;
+}
+
+header>.title {
+	margin: 0 auto;
+	width: 940px;
+}
+.container {
+	margin: 130px auto;
+	width: 940px;
+}
+
+header>nav {
+	position: relative;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background-image: url('../img/nav_background.png');
+}
+
+header>nav>ul {
+	margin: 0 auto;
+	width: 940px;
+	list-style: none;
+}
+
+header>nav>ul>li {
+	float: left;
+}
+
+header>nav>ul>li>a {
+	display: block;
+	margin-right: 20px;
+	width: 215px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 44px;
+	text-align: center;
+	text-decoration: none;
+	color: #777;
+}
+
+header>nav>ul>li>a:hover {
+	color: #fff;
+}
+
+header>nav>ul>li:selected a {
+	color: #fff;
+}
+
+.subscribe {
+	margin-left: 22px;
+	padding-left: 33px;
+	text-align: left;
+	background: url('../img/rss.png') left center no-repeat;
+}
+
+#intro {
+	position: relative;
+	margin-top: 66px;
+	width: 800px;
+	padding: 44px;
+	height: 200px;
+	background: #467612 url('../img/intro_background.png') repeat-x;
+	border-radius: 22px 22px;
+}
+
+#intro>h2,
+#intor>h3 {
+	position: relative;
+	z-index: 1000;
+	width: 60%;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+#intro>h2 {
+	padding: 30px 0 22px 0;
+	color: #000;
+	font-size: 50px;
+}
+
+#intro>h3 {
+	padding: 40px 60px 100px 150px;
+	color: #000;
+	width: 300px;
+	z-index: 1;
+	position: relative;
+	
+}
+
+#intro>img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 300px;
+	height: 100%;
+	border-radius: 22px;
+}
+
+#about {
+	margin-top: 20px;
+	padding: 20px 20px 20px 500px;
+	border-top: 1px solid #d7d7d7;
+}
+
+#about h1 {
+	text-align: left;
+}
+
+#about h3 {
+	color: #000;
+}
+
+#about>section {
+	padding: 20px;
+}
+
+#about>section>article {
+	font-size: 16px;
+}
+#about>section>header {
+	display: table;
+	width: 400px;
+	padding-right: 20px;
+}
+
+
+#family>img {
+	width: 500px;
+}
