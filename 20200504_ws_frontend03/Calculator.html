@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .cal {
+            width: 280px;
+            height: 500px;
+            border: 1px solid #345;
+            margin: auto;
+        }
+        #inputView {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid #345;
+            height: 20px;
+        }
+        #inputView > p {
+            margin: 0;
+        }
+        
+        .cal--view {
+            text-align: right;
+            padding: 2px;
+        }
+        .call--btn {
+            text-align: center;
+        }
+        .btn {
+            width: 22%;
+            height: 65px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+        .call--result > h2{
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Calculator </h1>
+    </header>
+    <div class="cal">
+        <div class="cal--view">
+            <div class="cal__input--view" id = "inputView"></div>
+        </div>
+        <div class="call--btn">
+            <button data-val ="7" class="btn"> 7 </button>
+            <button data-val ="8" class="btn"> 8 </button>
+            <button data-val ="9" class="btn"> 9 </button>
+            <button data-val ="+" class="btn"> + </button> <br>
+            <button data-val ="4" class="btn"> 4 </button>
+            <button data-val ="5" class="btn"> 5 </button>
+            <button data-val ="6" class="btn"> 6 </button>
+            <button data-val ="-" class="btn"> - </button> <br>
+            <button data-val ="1" class="btn"> 1 </button>
+            <button data-val ="2" class="btn"> 2 </button>
+            <button data-val ="3" class="btn"> 3 </button>
+            <button data-val ="*" class="btn"> * </button> <br>
+            <button data-val ="0" class="btn"> 0 </button>
+            <button data-val ="CE" class="btn"> CE </button>
+            <button data-val ="=" class="btn"> = </button>
+            <button data-val ="/" class="btn"> / </button>
+        </div>
+        <div class="call--result">
+            <h2> 결&emsp;과&emsp;이&emsp;력 </h2>
+            <ol>
+            </ol>
+        </div>
+    </div>
+    <script>
+        // 작업 할 엘리먼트 접근
+        let btns = document.querySelectorAll(".btn");
+        for(let i = 0; i < btns.length; i++){
+            btns[i].addEventListener("click", btnAction);
+        }
+
+        let ceFlag = false;
+        
+        // 처리할 일
+        function btnAction(event) {
+            let btn = event.target;
+            let val = btn.getAttribute("data-val");
+
+            let inputView = document.querySelector("#inputView");
+            
+            switch(val){
+                case 'CE':
+                    inputView.innerText = "0.0";
+                    ceFlag = true;
+                    return;
+                case '=':
+                    let result = inputView.innerText + "=" + eval(inputView.innerText);
+                    inputView.innerText = "";
+
+                    let ol = document.querySelector(".call--result > ol");
+                    let list = document.createElement("li");
+
+                    ol.append(list);
+                    list.innerText = result;
+                    return;
+                default:
+                    if(ceFlag){
+                        inputView.innerText = val;
+                    } else{
+                        inputView.innerText += val;
+                    }
+            }
+            ceFlag = false;
+        }
+    </script>
+</body>
+</html>
