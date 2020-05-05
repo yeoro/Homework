@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Reservation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .sale {
+            text-decoration-line: line-through;
+        }
+    </style>
+    <script>
+        /*
+        // 일반표현
+        window.onload = function() {
+            console.log($("#totalPrice"));
+            $("#totalPrice").val(10000);
+        }
+        */
+
+        /*
+        // 단축표현
+        $(function (){
+            console.log($("#totalPrice"));
+            $("#totalPrice").val(10000);
+        });
+        */
+
+        /*
+        // 어느 위치에서든 사용 가능
+        $(document).ready(function () {
+            console.log($("#totalPrice"));
+            $("#totalPrice").val(10000);
+        });
+        */
+    </script>
+</head>
+<body>
+    <h1> 영화 예매 </h1>
+    <form>
+        <div>
+            <label> 상영관 </label> 
+            <select>
+                <option> CGV </option>
+                <option> MegaBox </option>
+                <option> Lotte Cinema</option>
+            </select>
+            <label> 날짜 선택 </label>
+            <input type="date" />
+        </div>
+        <div>
+            <fieldset>
+                <!-- 라디오박스와 라벨태그를 묶어줘서 라벨태그를 선택해도 체크 가능 -->
+                <legend> 시간선택 </legend>
+                <input type="radio" name="revTime" id="revTime1" value="1" checked>
+                <label for="revTime1"> 08:30 </label>
+                <input type="radio" name="revTime" id="revTime2" value="2">
+                <label for="revTime2"> 11:30 </label>
+                <input type="radio" name="revTime" id="revTime3" value="3"> 
+                <label for="revTime3"> 14:20 </label>
+                <input type="radio" name="revTime" id="revTime4" value="4">
+                <label for="revTime4"> 17:25 </label>
+                <input type="radio" name="revTime" id="revTime5" value="5">
+                <label for="revTime5"> 20:10 </label>
+                <input type="radio" name="revTime" id="revTime6" value="6">
+                <label for="revTime6"> 23:05 </label>
+            </fieldset>
+        </div>
+        <div>
+            <!-- 
+                일반적인 텍스트만 나타낼 때 : label
+                이벤트 처리시 텍스트를 바꿔야 할 때 : span      
+            -->
+            <label> 요금 </label>
+            <span id="ogPrice"> \9,000 </span>
+            <span id="salePrice"> \5,000 </span>
+        </div>
+        <div>
+            <label> 인원 </label>
+            <!-- value 값으로 초기 세팅 -->
+            <input type="number" id="revCnt" min="1" max="100" value="1">
+        </div>
+        <div>
+            <label> 금액 </label>
+            <input type="number" id="totalPrice" readonly>
+        </div>
+        <div>
+            <input type="checkbox" name="option" id="option" value="1"> 
+            <label for="option"> 추가 </label>
+        </div>
+        <div id="food">
+            <fieldset>
+                <legend> 옵션 </legend>
+                <input type="checkbox" name="popcorn" id="popcorn">
+                <label for="popcorn"> 팝콘 </label>
+                <input type="checkbox" name="coke" id="coke">
+                <label for="coke"> 콜라 </label>
+            </fieldset>
+        </div>
+        <div>
+            <button> 예매 </button>
+            <button> 취소 </button>
+        </div>
+    </form>
+    <script>
+        cal();
+        
+        // 추가 항목 부분 화면 설정
+        $("#food").hide();
+        $("input[name=option]").click(function(){
+            display();
+        });
+
+        // 인원 수에 따른 금액 계산
+        // document.querySelector("#revCnt").addEventListener("click", function () {});
+        // $("#revCnt").on("click", function() { });
+        $("#revCnt, input[name='revTime']").click(function(){
+            cal();
+        });
+        
+        // 인원 직접 입력 시 금액 계산
+        $("#revCnt").blur(function(){
+            cal();
+        });
+
+        // 금액 계산 함수
+        function cal(){
+            $("#salePrice").hide();
+            $("#ogPrice").removeClass("sale");
+
+            // 시간대에 따른 금액 계산
+            let price = 9000;
+            // name속성 값이 revTime인 input엘리먼트 중 checked인 엘리먼트
+            if($("input[name='revTime']:checked").val() == "1"){
+                price = 5000;
+                $("#salePrice").show();
+                $("#ogPrice").addClass("sale"); // 클래스 속성을 추가하여 CSS 적용
+            } 
+            $("#totalPrice").val($("#revCnt").val() * price);
+        }
+
+        // 추가 항목 화면 설정 함수
+        function display(){
+            $("#food").hide();
+            if($("input[name=option]:checked").val() == "1"){
+                $("#food").show();
+            }
+        }
+    </script>
+</body>
+</html>
