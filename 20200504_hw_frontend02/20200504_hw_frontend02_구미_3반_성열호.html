@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto Machine</title>
+    <style>
+        .lottoView {
+            height: 400px;
+            width: 60%;
+            margin: 20px;
+            background-color: cornflowerblue;
+        }
+        .lottoNums {
+            padding: 150px 30px 0 160px;
+        }
+        .lottoNum {
+            display: inline-block;
+            background-color:rgba(236, 240, 32, 0.897);
+            width:50px; height:50px;
+            border-radius:75px;
+            text-align: center;
+            margin:10px;
+            font-size: 20px;
+            font-weight: bold;
+            vertical-align: middle;
+            line-height:50px;
+        }
+    </style>
+</head>
+<body>
+    <h2> 대박을 기원합니다~~ </h2>
+    <div class="lottoView">
+        <div class="lottoNums"> </div>
+    </div>
+</body>
+<script>
+    let lottoArr = new Array(6);
+
+    // 중복 없이 로또 번호 생성
+    for(let i = 1; i <= 6; i++){
+        let num = Math.floor(Math.random() * 45) + 1;
+        if(lottoArr.indexOf(num) == -1){
+            lottoArr.push(num);
+        } else{
+            i--;
+            continue;
+        }
+    }
+
+    // 로또 번호 정렬
+    lottoArr.sort(function(a, b) {
+        return a-b;
+    });
+    
+    let idx = 0;
+    let timer = setInterval(function(){
+        let lottoView = document.querySelector(".lottoNums");
+        let lottoNum = document.createElement("div");
+        lottoNum.setAttribute("class", "lottoNum");
+        lottoNum.innerText = lottoArr[idx];
+        lottoView.append(lottoNum);
+        idx++;            
+        if(idx == 6){
+            clearInterval(timer);
+        }
+    }, 1000);
+</script>
+</html>
